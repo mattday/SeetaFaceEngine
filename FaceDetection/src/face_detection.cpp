@@ -33,6 +33,8 @@
 
 #include <memory>
 #include <vector>
+#include <exception>
+#include <stdexcept>
 
 #include "detector.h"
 #include "fust.h"
@@ -71,7 +73,8 @@ class FaceDetection::Impl {
 
 FaceDetection::FaceDetection(const char* model_path)
     : impl_(new seeta::FaceDetection::Impl()) {
-  impl_->detector_->LoadModel(model_path);
+  if (!impl_->detector_->LoadModel(model_path))
+    throw std::runtime_error("SeetaFaceEngine failed to load model from file: " + model_path);
 }
 
 FaceDetection::~FaceDetection() {
