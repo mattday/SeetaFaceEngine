@@ -9,6 +9,8 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -std=c++11 -O2 -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -std=c++11 -O2")
 
+set(BUILD_EXAMPLES "" CACHE STRING "Build example program(s) in addition to shared library")
+
 MESSAGE(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")
 
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
@@ -24,7 +26,9 @@ set(VIPLNET_SRC_DIR ${PROJECT_SOURCE_DIR}/src)
 include_directories(${VIPLNET_INCLUDE_DIR})
 include_directories(${VIPLNET_SRC_DIR})
 
-add_subdirectory(src)
+if (NOT "${BUILD_EXAMPLES}" STREQUAL "")
+	add_subdirectory(src)
+endif()
 
 aux_source_directory(./src SRC_LIST)
 aux_source_directory(./tools TOOLS_LIST)
