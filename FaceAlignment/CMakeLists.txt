@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.4)
 project(seeta_fa_lib)
 
 # Build options
-option(BUILD_EXAMPLES  "Set to ON to build examples"  ON)
+option(BUILD_EXAMPLES  "Set to ON to build examples"  OFF)
 
 # Use C++11
 #set(CMAKE_CXX_STANDARD 11)

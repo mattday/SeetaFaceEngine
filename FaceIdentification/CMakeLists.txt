@@ -2,14 +2,15 @@ cmake_minimum_required (VERSION 2.6)
 
 project (viplnet)
 
+# Build options
+option(BUILD_EXAMPLES  "Set to ON to build examples"  OFF)
+
 set (VIPLNET_VERSION_MAJOR 4)
 set (VIPLNET_VERSION_MINOR 5)
 
 set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -std=c++11 -O2 -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -std=c++11 -O2")
-
-set(BUILD_EXAMPLES "" CACHE STRING "Build example program(s) in addition to shared library")
 
 MESSAGE(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")
 
@@ -26,8 +27,9 @@ set(VIPLNET_SRC_DIR ${PROJECT_SOURCE_DIR}/src)
 include_directories(${VIPLNET_INCLUDE_DIR})
 include_directories(${VIPLNET_SRC_DIR})
 
-if (NOT "${BUILD_EXAMPLES}" STREQUAL "")
-	add_subdirectory(src)
+if (BUILD_EXAMPLES)
+    message(STATUS "Build with examples.")
+    add_subdirectory(src)
 endif()
 
 aux_source_directory(./src SRC_LIST)
