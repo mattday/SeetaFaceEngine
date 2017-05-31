@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
 
-project (viplnet)
+project (seeta_face_identification)
 
 # Build options
 option(BUILD_EXAMPLES  "Set to ON to build examples"  OFF)
@@ -34,7 +34,7 @@ endif()
 
 aux_source_directory(./src SRC_LIST)
 aux_source_directory(./tools TOOLS_LIST)
-add_library(viplnet SHARED ${SRC_LIST} ${TOOLS_LIST})
-set_target_properties(viplnet PROPERTIES 
+add_library(seeta_face_identification SHARED ${SRC_LIST} ${TOOLS_LIST})
+set_target_properties(seeta_face_identification PROPERTIES 
   VERSION ${VIPLNET_VERSION_MAJOR}.${VIPLNET_VERSION_MINOR} 
   SOVERSION ${VIPLNET_VERSION_MAJOR}.${VIPLNET_VERSION_MINOR}) 

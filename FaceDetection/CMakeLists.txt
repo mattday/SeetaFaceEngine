@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-project(seeta_facedet_lib)
+project(seeta_face_detection)
 
 # Build options
 option(BUILD_EXAMPLES  "Set to ON to build examples"  OFF)
@@ -50,8 +50,8 @@ set(src_files
     )
 
 # Build shared library
-add_library(seeta_facedet_lib SHARED ${src_files})
-set(facedet_required_libs seeta_facedet_lib)
+add_library(seeta_face_detection SHARED ${src_files})
+set(facedet_required_libs seeta_face_detection)
 
 # Build examples
 if (BUILD_EXAMPLES)
@@ -67,3 +67,4 @@ if (BUILD_EXAMPLES)
         target_link_libraries(facedet_test ${facedet_required_libs})
     endif()
 endif()
+
