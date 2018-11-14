@@ -33,6 +33,10 @@
 #include "cfan.h"
 #include <string.h>
 #include <algorithm>
+
+/* Suppress compiler warnings due to CCFAN::Init ignoring return values from fread */
+#pragma GCC diagnostic ignored "-Wunused-result"
+
 /** A constructor.
   *  Initialize basic parameters.
   */
@@ -457,4 +461,4 @@ bool CCFAN::ResizeImage(const unsigned char *src_im, int src_width, int src_heig
   return true;
 }
 
-
+#pragma GCC diagnostic pop
